@@ -1,0 +1,30 @@
+name: CD-SFTP
+ 
+on:
+  workflow_dispatch:
+ 
+jobs:
+  deploy-via-sftp:
+    runs-on: ubuntu-latest
+    concurrency: 
+      group: production-deployment
+      cancel-in-progress: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+        
+      - name: Mirror files via pure SFTP
+        env:
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -c "
+          set sftp:auto-confirm yes;
+          open -u '${{ secrets.FTP_USERNAME }}',\"$FTP_PASSWORD\" sftp://${{ secrets.FTP_HOST }};
+          
+          mirror --reverse --delete --exclude-glob .git/ --exclude-glob .github/ ./ /public_html/code/;
+          "
