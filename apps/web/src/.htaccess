@@ -2,6 +2,10 @@ ErrorDocument 404 /
 RewriteEngine On
 RewriteBase /
 
-# Leitet /index.html per 301-Redirect permanent auf die Hauptdomain
+# HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# "./index.html" to "./"
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ https://%{HTTP_HOST}/ [R=301,L]
