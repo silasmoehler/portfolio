@@ -101,7 +101,7 @@ a {
 
 a:hover {
     color: var(--system-secondary);
-    cursor: hover;
+    cursor: pointer;
 }
 
 button {
