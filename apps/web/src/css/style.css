@@ -1,0 +1,132 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Inter';
+    src: url("https://media.project-oppia.com/fonts/Inter/Inter-VariableFont_opsz,wght.woff2"), format("woff2"),
+         url("https://media.project-oppia.com/fonts/Nunito-Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.woff2"), format("woff2"),
+         sans-serif;
+}
+
+/* Color Variables */
+
+.root {
+    --system: #19192E;
+    --system-secondary: #15153d;
+    --background: #FEFEFE;
+}
+
+@media (prefers-color-scheme: light) {
+    .root {
+        --system: #19192E;
+        --system-secondary: #15153d;
+        --background: #FEFEFE;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .root {
+        --system: #F4FAFE;
+        --system-secondary: #e5f3fc;
+        --background: #131322;
+    }
+}
+
+/* Elements */
+
+body {
+    /* Layout */
+    display: flex;
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Style */
+    background: var(--background);
+}
+
+@media (min-width: 550px) {
+    body {
+        all: unset;
+        
+        /* Layout */
+        display: flex;
+        padding: 50px 80px;
+        flex-direction: column;
+        align-items: flex-start;
+
+        /* Style */
+        background: var(--background);
+    }
+}
+
+h1 {
+    /* Layout */
+    align-self: stretch;
+
+    /* Style */
+    color: var(--system);
+    font-family: 'Inter';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+p {
+    /* Layout */
+    align-self: stretch;
+
+    /* Style */
+    color: var(--system);
+    font-family: 'Inter';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+a {
+    /* Other */
+    all: unset;
+
+    /* Style */
+    color: var(--system);
+    cursor: default;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+a:hover {
+    color: var(--system-secondary);
+    cursor: hover;
+}
+
+button {
+    /* Layout */
+    all: unset;
+}
+
+/* Divisions */
+
+#content {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+#actions {
+    /* Layout */
+    display: flex;
+    padding: 8px 10px;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}

@@ -1,4 +1,4 @@
-name: CD-SFTP
+name: deploy-portfolio
  
 on:
   workflow_dispatch:
@@ -26,5 +26,5 @@ jobs:
           set sftp:auto-confirm yes;
           open -u '${{ secrets.FTP_USERNAME }}',\"$FTP_PASSWORD\" sftp://${{ secrets.FTP_HOST }};
           
-          mirror --reverse --delete --exclude-glob .git/ --exclude-glob .github/ ./ /public_html/code/;
+          mirror --reverse --delete ./apps/web/src /public_html/sites/silasmoehler;
           "
