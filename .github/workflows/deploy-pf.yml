@@ -26,5 +26,5 @@ jobs:
           set sftp:auto-confirm yes;
           open -u '${{ secrets.FTP_USERNAME }}',\"$FTP_PASSWORD\" sftp://${{ secrets.FTP_HOST }};
           
-          mirror --reverse --delete ./apps/web/src /public_html/sites/silasmoehler;
+          mirror --reverse --delete ./apps/main/src /public_html/sites/silasmoehler;
           "
